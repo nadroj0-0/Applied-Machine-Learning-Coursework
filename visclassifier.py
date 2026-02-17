@@ -28,6 +28,8 @@ def visclassifier(fun,xTr,yTr,w=None,b=0):
         xTe = (np.array([pixelX.flatten(), pixelY.flatten()]).T)
         if isinstance(xTr, torch.Tensor):
             testpreds = fun(torch.FloatTensor(xTe)) # .detach().numpy()
+        else:
+            testpreds = fun(xTe)
 
     if isinstance(testpreds, torch.Tensor):
         testpreds = testpreds.numpy()
